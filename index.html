@@ -57,8 +57,7 @@
       padding: 1px 2px;
     }
 
-    .radios label,
-    .checks label {
+    .radios label {
       display: block;
       margin: 4px 0;
     }
@@ -68,6 +67,11 @@
       grid-template-columns: 1fr 1fr;
       gap: 2px 12px;
       max-width: 260px;
+    }
+
+    .checks label {
+      display: block;
+      margin: 4px 0;
     }
 
     textarea {
@@ -115,6 +119,7 @@
   <div class="page">
     <h1>Pizza Ordering Form</h1>
 
+    <!-- action="#" prevents the GitHub Pages 404 on submit -->
     <form action="#" method="post">
       <h2>Contact Information</h2>
 
@@ -125,7 +130,16 @@
 
       <div class="row">
         <label for="phone">Phone:</label>
-        <input id="phone" name="phone" type="tel" required />
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          inputmode="numeric"
+          pattern="[0-9]{10}"
+          maxlength="10"
+          title="Phone number must be exactly 10 digits (no spaces or dashes)."
+        />
       </div>
 
       <div class="row">
@@ -184,42 +198,42 @@
       </div>
     </form>
 
-<table>
-  <caption>List of My Favorite Games</caption>
-  <thead>
-    <tr>
-      <th scope="col">Developer</th>
-      <th scope="col">Title</th>
-      <th scope="col">Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="rowgroup" rowspan="2">Square Enix</th>
-      <td>Kingdom Hearts 2</td>
-      <td>2005</td>
-    </tr>
-    <tr>
-      <td>Kingdom Hearts 3</td>
-      <td>2019</td>
-    </tr>
-    <tr>
-      <th scope="row">Sandfall Interactive</th>
-      <td>Expedition 33</td>
-      <td>2025</td>
-    </tr>
-    <tr>
-      <th scope="row">Gearbox</th>
-      <td>Borderlands 2</td>
-      <td>2012</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3">Count: 4</td>
-    </tr>
-  </tfoot>
-</table>
+    <table>
+      <caption>List of My Favorite Games</caption>
+      <thead>
+        <tr>
+          <th scope="col">Developer</th>
+          <th scope="col">Title</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="rowgroup" rowspan="2">Square Enix</th>
+          <td>Kingdom Hearts 2</td>
+          <td>2005</td>
+        </tr>
+        <tr>
+          <td>Kingdom Hearts 3</td>
+          <td>2019</td>
+        </tr>
+        <tr>
+          <th scope="row">Sandfall Interactive</th>
+          <td>Expedition 33</td>
+          <td>2025</td>
+        </tr>
+        <tr>
+          <th scope="row">Gearbox</th>
+          <td>Borderlands 2</td>
+          <td>2012</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Count: 4</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </body>
 </html>
