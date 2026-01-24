@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pizza Ordering Form</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .page {
+      width: 340px;
+      margin: 10px auto;
+      border: 2px solid #000;
+      padding: 10px 12px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin: 0 0 14px 0;
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 18px 0 10px 0;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0;
+    }
+
+    .row label {
+      width: 60px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 210px;
+      padding: 2px 4px;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    select {
+      font-family: inherit;
+      font-size: 16px;
+      padding: 1px 2px;
+    }
+
+    .radios label,
+    .checks label {
+      display: block;
+      margin: 4px 0;
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 12px;
+      max-width: 260px;
+    }
+
+    textarea {
+      width: 260px;
+      height: 60px;
+      resize: both;
+      font-family: monospace;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .submit-row {
+      margin-top: 8px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 8px;
+      width: 260px;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: left;
+      margin-top: 16px;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 2px 6px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    tfoot td {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Pizza Ordering Form</h1>
+
+    <form action="#" method="post">
+      <h2>Contact Information</h2>
+
+      <div class="row">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+
+      <div class="row">
+        <label for="phone">Phone:</label>
+        <input id="phone" name="phone" type="tel" required />
+      </div>
+
+      <div class="row">
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <h2>Select Pizza Size</h2>
+
+      <div class="row">
+        <label for="size">Pizza Size:</label>
+        <select id="size" name="size" required>
+          <option value="" selected disabled>--Select Size--</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          <option value="xlarge">XLarge</option>
+        </select>
+      </div>
+
+      <h2>Select Sauce</h2>
+
+      <div class="radios">
+        <label>
+          <input type="radio" name="sauce" value="marinara" required />
+          Marinara
+        </label>
+        <label>
+          <input type="radio" name="sauce" value="ranch" />
+          Ranch
+        </label>
+        <label>
+          <input type="radio" name="sauce" value="none" />
+          No Sauce
+        </label>
+      </div>
+
+      <h2>Select Toppings</h2>
+
+      <div class="checks">
+        <label><input type="checkbox" name="toppings" value="pepperoni" /> Pepperoni</label>
+        <label><input type="checkbox" name="toppings" value="sausage" /> Sausage</label>
+        <label><input type="checkbox" name="toppings" value="mushroom" /> Mushroom</label>
+        <label><input type="checkbox" name="toppings" value="pineapple" /> Pineapple</label>
+        <label><input type="checkbox" name="toppings" value="peppers" /> Peppers</label>
+        <label><input type="checkbox" name="toppings" value="onions" /> Onions</label>
+      </div>
+
+      <h2>Additional Instructions</h2>
+
+      <div>
+        <textarea name="instructions" aria-label="Add instructions" placeholder="Add instructions"></textarea>
+      </div>
+
+      <div class="submit-row">
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+
+<table>
+  <caption>List of My Favorite Games</caption>
+  <thead>
+    <tr>
+      <th scope="col">Developer</th>
+      <th scope="col">Title</th>
+      <th scope="col">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="rowgroup" rowspan="2">Square Enix</th>
+      <td>Kingdom Hearts 2</td>
+      <td>2005</td>
+    </tr>
+    <tr>
+      <td>Kingdom Hearts 3</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th scope="row">Sandfall Interactive</th>
+      <td>Expedition 33</td>
+      <td>2025</td>
+    </tr>
+    <tr>
+      <th scope="row">Gearbox</th>
+      <td>Borderlands 2</td>
+      <td>2012</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Count: 4</td>
+    </tr>
+  </tfoot>
+</table>
+  </div>
+</body>
+</html>
