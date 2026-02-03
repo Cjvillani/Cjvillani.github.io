@@ -42,11 +42,12 @@ p{
   background:#ffffff;
   border:3px solid #1a8f2a;
 
-  width:70%;              /* prevents it from stretching across */
-  margin:16px 0 16px 95px; /* pushes it right but keeps it left-aligned */
+  width:58%;              /* makes it wrap -> taller */
+  margin:16px 0 16px 45px; /* moves it LEFT closer to example */
 
-  padding:10px 14px;
-  line-height:1.6;
+  padding:12px 16px;      /* adds height */
+  line-height:1.7;        /* makes text breathe like example */
+
   box-sizing:border-box;
 }
 
