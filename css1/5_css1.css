@@ -42,11 +42,11 @@ p{
   background:#ffffff;
   border:3px solid #1a8f2a;
 
-  width:58%;              /* makes it wrap -> taller */
-  margin:16px 0 16px 45px; /* moves it LEFT closer to example */
+  width:52%;              /* forces text to wrap into ~3 lines */
+  margin:16px 0 16px 28px; /* moves it further LEFT */
 
-  padding:12px 16px;      /* adds height */
-  line-height:1.7;        /* makes text breathe like example */
+  padding:12px 16px;
+  line-height:1.7;
 
   box-sizing:border-box;
 }
