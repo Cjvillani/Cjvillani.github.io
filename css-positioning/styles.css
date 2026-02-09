@@ -1,0 +1,142 @@
+:root{
+  --menu-width: 15%;
+  --header-height: 90px;
+}
+
+/* Basic page setup */
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family: "Times New Roman", Times, serif;
+  background:#f5f5f5;
+}
+
+/* Left jump menu: fixed, full height */
+#jumpMenu{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--menu-width);
+  overflow-y: auto;
+  background: #d6a63a;
+  padding: 18px 14px;
+}
+
+#jumpMenu h2{
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+#jumpMenu a{
+  display:block;
+  margin: 16px 0;
+  color: #1a1a9e;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Main content lives to the right of the menu */
+main{
+  margin-left: var(--menu-width);
+  padding-top: var(--header-height);
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* Header: fixed to top, does NOT include jump menu space */
+header{
+  position: fixed;
+  top: 0;
+  left: var(--menu-width);
+  width: calc(100% - var(--menu-width));
+  height: var(--header-height);
+  background: #e11;
+  z-index: 1000;
+}
+
+/* Center the site title and keep buttons under it */
+header > p{
+  margin: 6px 0 6px 0;
+  text-align:center;
+  font-size: 18px;
+  color:#000;
+}
+
+header nav{
+  display:flex;
+  justify-content: center;
+  gap: 18px;
+  background:#000;
+  padding: 8px 0;
+}
+
+/* Buttons styled like tabs */
+header nav button{
+  width: 170px;
+  padding: 8px 10px;
+  border: none;
+  background: #0a2cff;
+  color:#fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Page title */
+main h1{
+  text-align:center;
+  margin: 20px 0 18px 0;
+  font-size: 34px;
+}
+
+/* Article layout: wraps on resize */
+#container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 80px; /* space so footer/thanks never overlap content */
+}
+
+article{
+  width: 300px;              /* key requirement: fixed width */
+  background: #fff;
+  padding: 14px 14px 10px 14px;
+}
+
+article h2{
+  text-align:center;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+article p{
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 0 0 10px 0;
+}
+
+article a{
+  color:#0a2cff;
+}
+
+/* “Thank you for visiting!” always bottom-right of the page */
+#thanks{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 18px 22px;
+  background: #bfe2ff;
+  font-size: 26px;
+  z-index: 1100;
+}
+
+/* Footer can be normal flow */
+footer{
+  margin-top: 18px;
+  padding: 12px 0 24px 0;
+}
