@@ -1,192 +1,256 @@
-/* ---------- base ---------- */
+/* ====== GLOBAL RESET ====== */
 * { box-sizing: border-box; }
 
-body{
-  margin:0;
-  background:#f7f0df;
-  font-family: Georgia, "Times New Roman", serif;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-/* ---------- LEFT SIDEBAR (this MUST target #menuItems) ---------- */
-#menuItems{
-  position:fixed;
-  left:0;
-  top:0;
-  width:260px;
-  height:100vh;
-  background:#000;     /* black column behind buttons */
-  padding:0;
-  margin:0;
-  z-index:1000;
+/* Page background like the sample */
+body {
+  background: #f6f1df;
 }
 
-/* your menu is those tiny horizontal tabs — make them a vertical stack */
-#menuItems button{
-  display:block;
-  width:260px;
-  border:1px solid #111;
-  background:#00f;
-  color:#fff;
-  font-size:22px;
-  padding:12px 0;
-  margin:0;
-  cursor:pointer;
+/* ====== LEFT SIDEBAR NAV ====== */
+/* This aims at the provided starter structure (nav or #nav) without changing HTML */
+nav,
+#nav,
+#navigation,
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #000;
+  z-index: 50;
+  padding-top: 0;
 }
 
-/* hover on any navigation button changes background color */
-#menuItems button:hover{
-  background:#c79216;  /* gold */
-  color:#fff;
+/* Main nav list */
+nav ul,
+#nav ul,
+#navigation ul,
+#menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* if your HTML used list items (some versions do), neutralize bullets/spacing */
-#menuItems ul,
-#menuItems ol{
-  list-style:none;
-  padding:0;
-  margin:0;
+/* Each main nav item should be a full-width "button" row */
+nav li,
+#nav li,
+#navigation li,
+#menu li {
+  position: relative; /* needed for the jump menu positioning */
 }
 
-#menuItems li{
-  margin:0;
-  padding:0;
+/* If your provided HTML uses <a> for nav */
+nav a,
+#nav a,
+#navigation a,
+#menu a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  padding: 16px 10px;
+  border: 1px solid #222;
 }
 
-/* ---------- JUMP MENU (nav#jumpMenu) ---------- */
-#jumpMenu{
-  position:fixed;
-  left:0;
-  top:56px;            /* sits directly under the first button */
-  width:260px;
-  background:#c79216;
-  border-left:1px solid #111;
-  border-right:1px solid #111;
-  border-bottom:1px solid #111;
-  padding:10px 0;
-  margin:0;
-  z-index:1100;
-  display:none;        /* hidden until hover */
+/* If your provided HTML uses <button> for nav */
+nav button,
+#nav button,
+#navigation button,
+#menu button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  padding: 16px 10px;
+  border: 1px solid #222;
+  cursor: pointer;
 }
 
-/* hide the "Jump to an Article" heading so it matches the example */
-#jumpMenu h2{
-  display:none;
+/* Default main nav look (blue buttons) */
+nav > ul > li > a,
+#nav > ul > li > a,
+#navigation > ul > li > a,
+#menu > ul > li > a,
+nav > ul > li > button,
+#nav > ul > li > button,
+#navigation > ul > li > button,
+#menu > ul > li > button {
+  background: #001dff;
+  color: #fff;
 }
 
-/* show the jump menu ONLY when hovering the Recent Articles button (first button) */
-#menuItems:has(button:first-of-type:hover) + #jumpMenu{
-  display:block;
+/* Hover on a navigation button changes background (gold like the sample) */
+nav > ul > li:hover > a,
+#nav > ul > li:hover > a,
+#navigation > ul > li:hover > a,
+#menu > ul > li:hover > a,
+nav > ul > li:hover > button,
+#nav > ul > li:hover > button,
+#navigation > ul > li:hover > button,
+#menu > ul > li:hover > button {
+  background: #c79210;
+  color: #fff;
 }
 
-/* keep it open when your mouse is over the jump menu itself */
-#jumpMenu:hover{
-  display:block;
+/* ====== JUMP MENU (Recent Articles dropdown) ======
+   Assumes the "Recent Articles" item contains a nested <ul> of article links. */
+nav ul ul,
+#nav ul ul,
+#navigation ul ul,
+#menu ul ul {
+  display: none;               /* hidden until hover */
+  position: absolute;
+  top: 100%;                   /* directly under the Recent Articles button */
+  left: 0;
+  width: 100%;
+  background: #c79210;         /* gold panel */
+  border: 1px solid #222;
+  z-index: 60;
+  padding: 6px 0;
+  margin: 0;
 }
 
-/* jump menu links */
-#jumpMenu a{
-  display:block;
-  padding:2px 0 2px 70px;
-  color:#00f;
-  text-decoration:underline;
-  font-size:20px;
+/* Show dropdown when hovering the parent li (Recent Articles) */
+nav > ul > li:hover > ul,
+#nav > ul > li:hover > ul,
+#navigation > ul > li:hover > ul,
+#menu > ul > li:hover > ul {
+  display: block;
 }
 
-/* hover for jump menu items: font color + background color change */
-#jumpMenu a:hover{
-  background:#00f;
-  color:#fff;
+/* Dropdown links */
+nav ul ul a,
+#nav ul ul a,
+#navigation ul ul a,
+#menu ul ul a {
+  background: transparent;
+  color: #001dff;
+  font-size: 20px;
+  padding: 2px 10px;
+  border: none;
+  text-align: center;
 }
 
-/* if the provided HTML uses <br> between links, remove the extra visual spacing */
-#jumpMenu br{ display:none; }
+/* Hover on a jump menu item changes font + background like the sample */
+nav ul ul a:hover,
+#nav ul ul a:hover,
+#navigation ul ul a:hover,
+#menu ul ul a:hover {
+  background: #001dff;
+  color: #fff;
+}
 
-/* ---------- push all page content to the right of the sidebar ---------- */
-header,
+/* ====== MAIN PAGE CONTENT OFFSET (so it doesn’t go under the sidebar) ====== */
 main,
-footer{
-  margin-left:260px;
+#main,
+#content,
+.wrapper,
+.container,
+body > div {
+  /* We only want to offset the main content area, not the sidebar */
 }
 
-/* ---------- header / banner ---------- */
-header{
-  background:#f00;
-  border-bottom:2px solid #000;
-  padding:28px 0;
-  text-align:center;
+/* This is the reliable part: push everything except the fixed nav over */
+body {
+  padding-left: 240px;
 }
 
-header p{
-  margin:0;
-  font-size:48px;
-  color:#000;
+/* ====== TOP RED HEADER / BANNER ====== */
+/* Targets common ids/classes used in the starter file */
+header,
+#header,
+#banner,
+#topBanner {
+  background: #ff0000;
+  border-bottom: 2px solid #222;
+  width: calc(100vw - 240px);   /* full width minus sidebar */
+  margin: 0;                   /* removes the gap you’re seeing */
+  padding: 24px 0;
 }
 
-/* ---------- title + articles layout ---------- */
-h1{
-  text-align:center;
-  margin:40px 0 20px;
-  font-size:56px;
-  color:#111;
+/* If the banner element is inside another wrapper, force it to fill */
+header *,
+#header *,
+#banner *,
+#topBanner * {
+  margin: 0;
 }
 
-#container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:28px;
-  padding:0 40px 40px;
+/* Center the title text in the red bar */
+header h1,
+#header h1,
+#banner h1,
+#topBanner h1 {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 44px;
+  color: #000;
 }
 
-/* ---------- article behavior: light -> dark + expands, 2 seconds ---------- */
-article{
-  width:280px;
-  background:#fff;
-  padding:18px 18px 10px;
-  border:1px solid #eee1c8;
-  color:#bbb;                       /* light at rest */
-  transition: color 2s, transform 2s;
-  transform-origin:center top;
+/* ====== PAGE TITLE (Recent Journal Articles) ====== */
+h2 {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 56px;
+  margin: 40px 0 20px 0;
+  color: #111;
 }
 
-article:hover{
-  color:#111;                       /* darker on hover */
-  transform: scale(1.08);           /* expands */
+/* ====== ARTICLES: LIGHT -> DARK + EXPAND (2s) ====== */
+article {
+  background: rgba(255,255,255,0.65);
+  padding: 18px 18px 30px 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.35);                 /* light text at rest */
+  transition: color 2s ease, transform 2s ease;
+  transform-origin: center center;
 }
 
-/* first letter: only the first paragraph of main text; read more unaffected */
-article p:first-of-type::first-letter{
-  font-family:"Times New Roman", Times, serif;
-  font-size:36px;
-  line-height:1;
+/* Expand and darken on hover */
+article:hover {
+  color: rgba(0,0,0,0.85);
+  transform: scale(1.08);
+  z-index: 10;
+  position: relative;
 }
 
-/* keep Read more link blue regardless of article color */
-article a{
-  color:#00f;
+/* First letter of main paragraph: Times New Roman, 36px (Read More unaffected) */
+article p:first-of-type::first-letter {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 36px;
 }
 
-/* arrow for google links */
-a[href*="google"]::after{
-  content:"";
-  display:inline-block;
-  width:18px;
-  height:18px;
-  margin-left:8px;
-  background:url("arrowarrow.png") no-repeat center / contain;
-  vertical-align:middle;
+/* ====== "READ MORE" GOOGLE LINKS: ADD ARROW IMAGE ====== */
+/* Adds arrowarrow.png to the right of links pointing to Google */
+a[href*="google"]::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  vertical-align: -2px;
+  background: url("arrowarrow.png") no-repeat center / contain;
 }
 
-/* ---------- thank-you box ---------- */
-#thanks{
-  position:fixed;
-  right:0;
-  bottom:0;
-  background:#8ec7ff;
-  border:1px solid #000;
-  padding:18px 26px;
-  font-size:44px;
-  color:#00f;
-  text-decoration:underline;
-  z-index:900;
+/* Make sure Read More stays normal color like the sample */
+article a {
+  color: #001dff;
+}
+
+/* ====== OPTIONAL: keep the “Thank you for visiting!” box from covering content too much ====== */
+/* Only affects if that element has an id/class like this in your starter file */
+#thanks,
+.thanks {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
