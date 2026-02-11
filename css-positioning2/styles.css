@@ -1,1 +1,206 @@
+/* styles.css */
 
+/* --- layout constants --- */
+:root{
+  --jumpW: 240px;   /* left menu width */
+  --headH: 120px;   /* header height */
+}
+
+/* page base */
+body{
+  margin:0;
+  background:#f6f3e6; /* can be any, but matches the sample vibe */
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* LEFT jump menu: fixed, full height */
+#jumpMenu{
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:var(--jumpW);
+  background:#000;
+  color:#fff;
+  padding:16px 10px;
+  box-sizing:border-box;
+  overflow:auto;
+}
+
+#jumpMenu h2{
+  margin:0 0 12px 0;
+  font-size:22px;
+  text-align:center;
+}
+
+/* hide the article links until “Recent Articles” is hovered */
+#jumpMenu a{
+  display:none;
+  color:#1a33ff;
+  text-decoration:underline;
+  padding:2px 6px;
+  border-radius:2px;
+}
+
+#jumpMenu a:hover{
+  background:#001a73;
+  color:#fff;
+}
+
+/* when hovering the first nav button (“Recent Articles”), show the list */
+body:has(header nav button:first-child:hover) #jumpMenu{
+  background:#c99b1b;     /* gold panel like the example */
+  color:#000;
+}
+
+body:has(header nav button:first-child:hover) #jumpMenu a{
+  display:block;
+  text-align:center;
+}
+
+/* MAIN header: fixed at top, doesn’t scroll */
+header{
+  position:fixed;
+  top:0;
+  left:var(--jumpW);
+  right:0;
+  height:var(--headH);
+  background:#e00000;
+  border-bottom:1px solid #333;
+  box-sizing:border-box;
+  z-index:1000;
+}
+
+/* “MyBlog.com” centered within the header area (ignores jump menu space naturally via left offset) */
+header > p{
+  margin:18px 0 10px 0;
+  text-align:center;
+  font-size:44px;
+  color:#000;
+}
+
+/* nav buttons row */
+header nav{
+  display:flex;
+  justify-content:center;
+  gap:0;
+}
+
+header nav button{
+  width:260px;
+  padding:10px 0;
+  border:1px solid #000;
+  background:#001aef;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* hover color change on navigation buttons */
+header nav button:hover{
+  background:#0b36ff;
+}
+
+/* MAIN content area: pushed right of jump menu and down below header */
+main{
+  margin-left:var(--jumpW);
+  padding-top:var(--headH);
+}
+
+/* page title */
+main > h1{
+  margin:24px 0 18px 0;
+  text-align:center;
+  font-size:44px;
+  color:#222;
+}
+
+/* Articles container: responsive wrap */
+#container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:26px;
+  justify-content:center;
+  padding:0 24px 80px 24px;
+  box-sizing:border-box;
+}
+
+/* Each article fixed width so it reflows on resize */
+article{
+  width:300px;
+  background:#fff;
+  padding:16px 16px 10px 16px;
+  box-sizing:border-box;
+  color:#b2b2b2;                 /* “lightly-colored text” initially */
+  border:1px solid transparent;
+  transition: color 2s, transform 2s, box-shadow 2s, border-color 2s;
+}
+
+/* expand + darken on hover over 2s */
+article:hover{
+  color:#333;
+  transform:scale(1.05);
+  border-color:#777;
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Article headings */
+article h2{
+  margin:0 0 10px 0;
+  font-size:26px;
+  color:inherit;
+}
+
+/* First letter of main text (first paragraph inside article) */
+article > p:first-of-type::first-letter{
+  font-family:"Times New Roman", Times, serif;
+  font-size:36px;
+  line-height:1;
+  float:left;
+  padding-right:6px;
+}
+
+/* Make Read more unaffected by the big-letter rule by keeping it in another paragraph (already is) */
+article p{
+  margin:0 0 10px 0;
+  line-height:1.35;
+}
+
+/* “Read more...” links and arrow image */
+article p a{
+  color:#1a33ff;
+  text-decoration:underline;
+  position:relative;
+  padding-right:24px; /* space for the arrow */
+}
+
+/* show arrowarrow.png to the right of each Read more link */
+article p a::after{
+  content:"";
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin-left:6px;
+  vertical-align:middle;
+  background-image:url("arrowarrow.png");
+  background-size:contain;
+  background-repeat:no-repeat;
+}
+
+/* THANK YOU block fixed bottom-right, always visible */
+#thanks{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  margin:0;
+  background:#7fc6ff;
+  border:1px solid #000;
+  padding:18px 22px;
+  font-size:34px;
+  z-index:1100;
+}
+
+/* keep footer from hiding behind fixed thank-you block */
+footer{
+  padding:20px 24px 60px 24px;
+}
