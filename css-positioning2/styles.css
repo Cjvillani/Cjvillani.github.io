@@ -1,204 +1,189 @@
-:root{
-  --sidebar-w: 240px;
-  --header-h: 120px;
-  --btn-h: 46px;
-}
+/* ---------- base page ---------- */
+* { box-sizing: border-box; }
 
-/* base */
-*{ box-sizing:border-box; }
-html, body{ height:100%; }
 body{
   margin:0;
-  background:#f4f1df;
+  background:#f7f0df;
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* header bar (red) */
-header{
+/* black left column background like the example */
+body::before{
+  content:"";
   position:fixed;
-  top:0;
   left:0;
-  right:0;
-  height:var(--header-h);
-  background:#e40000;
-  z-index:50;
-  border-bottom:2px solid #222;
+  top:0;
+  width:260px;
+  height:100vh;
+  background:#000;
+  z-index:0;
 }
 
-/* center title, but ignore sidebar width */
-header > p{
-  margin:0;
-  height:var(--header-h);
-  line-height:var(--header-h);
-  font-size:44px;
+/* push the whole site right so the sidebar has room */
+main{
+  margin-left:260px;
+  position:relative;
+  z-index:1;
+}
+
+/* ---------- header / red banner ---------- */
+header{
+  background:#f00;
+  border-bottom:2px solid #000;
+  padding:28px 0;
   text-align:center;
-
-  /* this is the key: push it right by the sidebar width,
-     and shrink the usable width so it stays centered in the main area */
-  margin-left:var(--sidebar-w);
-  width:calc(100% - var(--sidebar-w));
 }
 
-/* left navigation buttons (vertical sidebar) */
+header p{
+  margin:0;
+  font-size:48px;
+  color:#000;
+}
+
+/* ---------- left sidebar buttons (header nav) ---------- */
 header nav{
   position:fixed;
-  top:0;
   left:0;
-  width:var(--sidebar-w);
-  height:100vh;
-  background:#000;          /* black fill below the buttons */
-  z-index:60;
+  top:0;
+  width:260px;
+  z-index:5;
   padding-top:0;
 }
 
 header nav button{
+  width:260px;
   display:block;
-  width:100%;
-  height:var(--btn-h);
   border:1px solid #111;
-  background:#0b1fff;       /* blue */
+  background:#00f;
   color:#fff;
-  font-size:20px;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor:default;
+  font-size:22px;
+  padding:12px 0;
+  cursor:pointer;
 }
 
-/* hover on any nav button changes background */
 header nav button:hover{
-  background:#d3a120;       /* gold-ish */
+  background:#c79216; /* gold-ish like example */
   color:#fff;
 }
 
-/* main content offset for sidebar + fixed header */
-main{
-  margin-left:var(--sidebar-w);
-  padding-top:calc(var(--header-h) + 20px);
-  padding-left:30px;
-  padding-right:30px;
-}
-
-/* big page title */
-main > h1{
-  text-align:center;
-  margin:30px 0 20px 0;
-  font-size:56px;
-}
-
-/* articles layout */
-#container{
-  display:flex;
-  flex-wrap:wrap;
-  gap:26px;
-  justify-content:center;
-  align-items:flex-start;
-}
-
-article{
-  width:300px;
-  background:#fff;
-  padding:18px 18px 14px 18px;
-  color:#b7b7b7;                 /* light text by default */
-  border:1px solid #e6e1cf;
-  transition: color 2s, transform 2s, box-shadow 2s;
-}
-
-/* hover over an article: darker text + expand over 2 seconds */
-article:hover{
-  color:#111;
-  transform:scale(1.06);
-  box-shadow:0 10px 25px rgba(0,0,0,0.22);
-}
-
-/* article headings */
-article h2{
-  margin:0 0 10px 0;
-  font-size:26px;
-}
-
-/* first letter of main text only (NOT the Read More paragraph) */
-article p:first-of-type::first-letter{
-  font-family:"Times New Roman", Times, serif;
-  font-size:36px;
-  line-height:1;
-  padding-right:6px;
-}
-
-/* read more link styling */
-article p:last-of-type{
-  margin-top:12px;
-}
-article a{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:14px;
-}
-
-/* add the arrow image to links that go to Google */
-a[href*="google"]::after{
-  content:"";
-  display:inline-block;
-  width:18px;
-  height:18px;
-  margin-left:6px;
-  vertical-align:text-bottom;
-  background:url("arrowarrow.png") no-repeat center / contain;
-}
-
-/* thank-you block fixed in bottom-right */
-#thanks{
-  position:fixed;
-  right:0;
-  bottom:0;
-  margin:0;
-  padding:22px 28px;
-  background:#8fd0ff;
-  border:1px solid #111;
-  font-size:40px;
-  font-family: Georgia, "Times New Roman", serif;
-  z-index:70;
-}
-
-/* jump menu dropdown (hidden until hover on Recent Articles button) */
+/* ---------- jump menu dropdown (shows on hover of "Recent Articles") ---------- */
 #jumpMenu{
   position:fixed;
   left:0;
-  top:var(--btn-h);              /* directly under the first button */
-  width:var(--sidebar-w);
-  height:calc(100vh - var(--btn-h));
-  background:#d3a120;
-  padding:14px 16px;
-  overflow:auto;
-  display:none;                   /* hidden by default */
-  z-index:65;
-  border-right:2px solid rgba(0,0,0,0.25);
+  top:56px;             /* sits directly under the first button */
+  width:260px;
+  background:#c79216;
+  border-left:1px solid #111;
+  border-right:1px solid #111;
+  border-bottom:1px solid #111;
+  padding:10px 0;
+  z-index:6;
+  display:none;         /* hidden until hover */
 }
 
+/* hide the "Jump to an Article" heading so it matches the sample look */
 #jumpMenu h2{
-  margin:0 0 10px 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:22px;
-  text-align:center;
+  display:none;
+}
+
+/* show the list when hovering the Recent Articles button */
+body:has(header nav button:first-child:hover) #jumpMenu{
+  display:block;
+}
+
+/* keep it visible when you move onto the menu */
+#jumpMenu:hover{
+  display:block;
 }
 
 /* jump menu links */
 #jumpMenu a{
   display:block;
-  padding:4px 6px;
-  margin:2px 0;
-  color:#1b1bff;
+  padding:2px 0 2px 70px;
+  color:#00f;
   text-decoration:underline;
-  font-family: Arial, Helvetica, sans-serif;
-  background:transparent;
+  font-size:20px;
 }
 
-/* hover on jump menu item changes font + background */
+/* hover style for jump menu items (font + background change) */
 #jumpMenu a:hover{
-  background:#0b1fff;
+  background:#00f;
   color:#fff;
-  text-decoration:none;
 }
 
-/* show jump menu when hovering the "Recent Articles" button OR the menu itself */
-body:has(header nav button:first-child:hover) #jumpMenu,
-body:has(#jumpMenu:hover) #jumpMenu{
-  display:block;
+/* remove the <br> spacing effect visually */
+#jumpMenu br{ display:none; }
+
+/* ---------- page title + grid ---------- */
+h1{
+  text-align:center;
+  margin:40px 0 20px;
+  font-size:56px;
+  color:#111;
+}
+
+#container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:28px;
+  padding:0 40px 40px;
+}
+
+/* ---------- articles: light -> dark + expand over 2 seconds ---------- */
+article{
+  width:280px;
+  background:#fff;
+  padding:18px 18px 10px;
+  border:1px solid #eee1c8;
+  color:#bbb;                 /* light text at rest */
+  transition: color 2s, transform 2s;
+  transform-origin:center top;
+}
+
+article:hover{
+  color:#111;                 /* darker on hover */
+  transform: scale(1.08);     /* expands */
+}
+
+/* first letter styling (only the main paragraph; Read more unaffected) */
+article p:first-of-type::first-letter{
+  font-family:"Times New Roman", Times, serif;
+  font-size:36px;
+  line-height:1;
+}
+
+/* keep the Read more link blue and not affected by the article color */
+article a{
+  color:#00f;
+}
+
+/* arrow for google links (your assignment says Read more goes to google) */
+a[href*="google"]::after{
+  content:"";
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin-left:8px;
+  background:url("arrowarrow.png") no-repeat center / contain;
+  vertical-align:middle;
+}
+
+/* ---------- thank-you box ---------- */
+#thanks{
+  position:fixed;
+  right:0;
+  bottom:0;
+  background:#8ec7ff;
+  border:1px solid #000;
+  padding:18px 26px;
+  font-size:44px;
+  color:#00f;
+  text-decoration:underline;
+  z-index:4;
+}
+
+/* footer not graded, but keep it readable */
+footer{
+  padding:30px 40px 60px;
 }
