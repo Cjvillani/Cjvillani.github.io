@@ -1,215 +1,204 @@
-/* ---------- layout variables ---------- */
 :root{
-  --sidebar-w: 15%;
-  --header-h: 130px;
+  --sidebar-w: 240px;
+  --header-h: 120px;
+  --btn-h: 46px;
 }
 
-/* ---------- base ---------- */
-*{ box-sizing: border-box; }
-
+/* base */
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
 body{
-  margin: 0;
-  background: #f6f1dc;
-  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  background:#f4f1df;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Push the page content to the right of the sidebar + below the fixed header */
-main{
-  margin-left: var(--sidebar-w);
-  padding-top: calc(var(--header-h) + 25px);
-}
-
-/* ---------- fixed top header bar (MyBlog.com) ---------- */
+/* header bar (red) */
 header{
-  position: fixed;
-  top: 0;
-  left: var(--sidebar-w);
-  right: 0;
-  height: var(--header-h);
-  background: #e40000;
-  border-bottom: 2px solid #222;
-  z-index: 50;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--header-h);
+  background:#e40000;
+  z-index:50;
+  border-bottom:2px solid #222;
 }
 
-header p{
-  margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 56px;
-  color: #000;
+/* center title, but ignore sidebar width */
+header > p{
+  margin:0;
+  height:var(--header-h);
+  line-height:var(--header-h);
+  font-size:44px;
+  text-align:center;
+
+  /* this is the key: push it right by the sidebar width,
+     and shrink the usable width so it stays centered in the main area */
+  margin-left:var(--sidebar-w);
+  width:calc(100% - var(--sidebar-w));
 }
 
-/* ---------- left sidebar = the nav buttons ---------- */
+/* left navigation buttons (vertical sidebar) */
 header nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--sidebar-w);
-  height: 100vh;
-  background: #000;
-  z-index: 60;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding-top: 0;
+  position:fixed;
+  top:0;
+  left:0;
+  width:var(--sidebar-w);
+  height:100vh;
+  background:#000;          /* black fill below the buttons */
+  z-index:60;
+  padding-top:0;
 }
 
-/* style the buttons (even though HTML uses invalid href on button) */
 header nav button{
-  width: 100%;
-  padding: 18px 10px;
-  font-size: 22px;
-  color: #fff;
-  background: #0a1fff;
-  border: 1px solid #111;
-  cursor: pointer;
+  display:block;
+  width:100%;
+  height:var(--btn-h);
+  border:1px solid #111;
+  background:#0b1fff;       /* blue */
+  color:#fff;
+  font-size:20px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor:default;
 }
 
+/* hover on any nav button changes background */
 header nav button:hover{
-  background: #0820b8; /* “background changes on hover” */
+  background:#d3a120;       /* gold-ish */
+  color:#fff;
 }
 
-/* ---------- jump menu dropdown (appears when hovering Recent Articles) ---------- */
-/* Your HTML has <nav id="jumpMenu">...</nav> already. We reuse it as the dropdown list. */
-#jumpMenu{
-  position: fixed;
-  left: 0;
-  top: 62px;                 /* sits under the first sidebar button */
-  width: var(--sidebar-w);
-  background: #c89417;       /* golden panel like the example */
-  border: 1px solid #333;
-  z-index: 70;
-
-  padding: 0 0 8px 0;
-  display: none;
+/* main content offset for sidebar + fixed header */
+main{
+  margin-left:var(--sidebar-w);
+  padding-top:calc(var(--header-h) + 20px);
+  padding-left:30px;
+  padding-right:30px;
 }
 
-/* hide the built-in heading “Jump to an Article” and replace with “Recent Articles” */
-#jumpMenu h2{
-  display: none;
+/* big page title */
+main > h1{
+  text-align:center;
+  margin:30px 0 20px 0;
+  font-size:56px;
 }
 
-#jumpMenu::before{
-  content: "Recent Articles";
-  display: block;
-  padding: 14px 10px;
-  font-size: 22px;
-  color: #fff;
-  background: #c89417;
-  border-bottom: 2px solid #333;
-  text-align: center;
-}
-
-/* Show dropdown when hovering the FIRST nav button (Recent Articles) */
-body:has(header nav button:first-child:hover) #jumpMenu{
-  display: block;
-}
-
-/* Keep it open while hovering the dropdown itself */
-#jumpMenu:hover{
-  display: block;
-}
-
-/* format article links inside the dropdown */
-#jumpMenu a{
-  display: block;
-  padding: 0 12px;
-  line-height: 26px;
-  text-decoration: underline;
-  color: #0000cc;
-  background: transparent;
-}
-
-/* hover effect for dropdown links (font + background change) */
-#jumpMenu a:hover{
-  color: #fff;
-  background: #0a1fff;
-}
-
-/* ---------- main title ---------- */
-h1{
-  margin: 0;
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 56px;
-  color: #111;
-}
-
-/* ---------- article grid ---------- */
+/* articles layout */
 #container{
-  margin: 20px auto 80px auto;
-  max-width: 1300px;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:26px;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 article{
-  width: 300px;                     /* fixed width like the hint */
-  background: #fff;
-  padding: 18px 20px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
-
-  color: rgba(0,0,0,0.25);          /* lightly-colored text initially */
-  transition: color 2s, transform 2s;
-  transform: scale(1);
-  transform-origin: top center;
+  width:300px;
+  background:#fff;
+  padding:18px 18px 14px 18px;
+  color:#b7b7b7;                 /* light text by default */
+  border:1px solid #e6e1cf;
+  transition: color 2s, transform 2s, box-shadow 2s;
 }
 
+/* hover over an article: darker text + expand over 2 seconds */
 article:hover{
-  color: rgba(0,0,0,0.95);          /* darker on hover */
-  transform: scale(1.10);           /* “expands” on hover */
-  z-index: 10;
+  color:#111;
+  transform:scale(1.06);
+  box-shadow:0 10px 25px rgba(0,0,0,0.22);
 }
 
+/* article headings */
 article h2{
-  margin: 0 0 10px 0;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 28px;
+  margin:0 0 10px 0;
+  font-size:26px;
 }
 
-/* first letter of MAIN text only (first paragraph), not “Read more” (second paragraph) */
+/* first letter of main text only (NOT the Read More paragraph) */
 article p:first-of-type::first-letter{
-  font-family: "Times New Roman", Times, serif;
-  font-size: 36px;
-  line-height: 1;
-  float: left;
-  padding-right: 6px;
+  font-family:"Times New Roman", Times, serif;
+  font-size:36px;
+  line-height:1;
+  padding-right:6px;
 }
 
-/* ---------- Read more arrow ---------- */
-article p:last-child a{
-  position: relative;
-  padding-right: 22px; /* room for arrow */
+/* read more link styling */
+article p:last-of-type{
+  margin-top:12px;
+}
+article a{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:14px;
 }
 
-/* adds arrow to the right of the Read more link */
-article p:last-child a::after{
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-left: 6px;
-  vertical-align: text-bottom;
-  background: url("arrowarrow.png") no-repeat center / contain;
+/* add the arrow image to links that go to Google */
+a[href*="google"]::after{
+  content:"";
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin-left:6px;
+  vertical-align:text-bottom;
+  background:url("arrowarrow.png") no-repeat center / contain;
 }
 
-/* ---------- Thank you fixed box (if your HTML includes it) ---------- */
+/* thank-you block fixed in bottom-right */
 #thanks{
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  background: #86c7ff;
-  border: 2px solid #333;
-  padding: 18px 24px;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 42px;
-  z-index: 80;
+  position:fixed;
+  right:0;
+  bottom:0;
+  margin:0;
+  padding:22px 28px;
+  background:#8fd0ff;
+  border:1px solid #111;
+  font-size:40px;
+  font-family: Georgia, "Times New Roman", serif;
+  z-index:70;
+}
+
+/* jump menu dropdown (hidden until hover on Recent Articles button) */
+#jumpMenu{
+  position:fixed;
+  left:0;
+  top:var(--btn-h);              /* directly under the first button */
+  width:var(--sidebar-w);
+  height:calc(100vh - var(--btn-h));
+  background:#d3a120;
+  padding:14px 16px;
+  overflow:auto;
+  display:none;                   /* hidden by default */
+  z-index:65;
+  border-right:2px solid rgba(0,0,0,0.25);
+}
+
+#jumpMenu h2{
+  margin:0 0 10px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:22px;
+  text-align:center;
+}
+
+/* jump menu links */
+#jumpMenu a{
+  display:block;
+  padding:4px 6px;
+  margin:2px 0;
+  color:#1b1bff;
+  text-decoration:underline;
+  font-family: Arial, Helvetica, sans-serif;
+  background:transparent;
+}
+
+/* hover on jump menu item changes font + background */
+#jumpMenu a:hover{
+  background:#0b1fff;
+  color:#fff;
+  text-decoration:none;
+}
+
+/* show jump menu when hovering the "Recent Articles" button OR the menu itself */
+body:has(header nav button:first-child:hover) #jumpMenu,
+body:has(#jumpMenu:hover) #jumpMenu{
+  display:block;
 }
