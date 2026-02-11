@@ -1,224 +1,238 @@
-/* css-positioning2 / style.css (or whatever your link href points to) */
+/* css-positioning2/style.css */
 
-/* Layout constants */
+/* quick layout knobs */
 :root{
-  --sidebar-w: 260px;
-  --header-h: 120px;
+  --sidebarW: 260px;
+  --headerH: 120px;
+  --btnH: 58px;
+  --borderDark: #222;
 }
 
-/* Basic reset */
+/* base */
 *{ box-sizing:border-box; }
+
 body{
   margin:0;
-  font-family: Georgia, "Times New Roman", serif;
-  background:#f6f2e6; /* beige-ish like the example */
+  background:#f3f0e6; /* light cream like example */
+  font-family: "Times New Roman", Times, serif;
 }
 
-/*  TOP HEADER (fixed, does NOT include sidebar space)  */
+/* push main content out from fixed sidebar + fixed header */
+main{
+  margin-left: var(--sidebarW);
+  padding-top: var(--headerH);
+}
+
+/* ---------- TOP HEADER (red bar + centered MyBlog.com) ---------- */
 header{
-  position:fixed;
-  top:0;
-  left:var(--sidebar-w);
-  width:calc(100% - var(--sidebar-w));
-  height:var(--header-h);
-  background:#e30000;
+  position: fixed;
+  top: 0;
+  left: var(--sidebarW);
+  right: 0;
+  height: var(--headerH);
+  background: #e00000;
+  border-bottom: 1px solid #000;
+  z-index: 50;
+}
+
+header > p{
+  margin: 0;
+  height: var(--headerH);
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:50;
-}
-
-/* MyBlog.com text */
-header > p{
-  margin:0;
-  font-size:44px;
+  font-size: 48px;
   color:#000;
 }
 
-/*  LEFT NAV BUTTONS (fixed sidebar)  */
+/* ---------- LEFT SIDEBAR NAV BUTTONS ---------- */
+/* header nav is the button stack */
 header nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebar-w);
-  height:100vh;
-  background:#000; /* black column under buttons */
-  padding:0;
-  margin:0;
-  z-index:60;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebarW);
+  height: 100vh;
+  background: #000;              /* black block under buttons */
+  border-right: 1px solid #000;
+  padding-top: 0;
+  z-index: 60;                   /* above header so it overlaps the left edge cleanly */
 }
 
-/* Make the header nav buttons stacked, full width */
+/* turn the buttons into the tall blue blocks */
 header nav button{
   display:block;
-  width:100%;
-  height:52px;
-  border:1px solid #111;
-  background:#0017d6; /* blue like example */
+  width: 100%;
+  height: var(--btnH);
+  border: 1px solid #111;
+  margin: 0;
+  background:#001eff;            /* strong blue */
   color:#fff;
-  font-size:22px;
-  cursor:pointer;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-/* Button hover background change requirement */
+/* hover state for any nav button */
 header nav button:hover{
-  background:#0a2cff;
+  background:#d7a21a;            /* gold-ish like example hover */
+  color:#fff;
 }
 
-/*  MAIN CONTENT AREA  */
-main{
-  margin-left:var(--sidebar-w);
-  padding-top:calc(var(--header-h) + 20px);
-  padding-left:18px;
-  padding-right:18px;
-}
-
-/* Center title like the example */
-h1{
-  text-align:center;
-  margin:10px 0 20px 0;
-  font-size:52px;
-  font-weight:700;
-}
-
-/*  ARTICLE GRID (reflows on resize)  */
-#container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:26px 26px;
-  padding-bottom:110px; /* space so fixed thanks doesn't cover content */
-}
-
-/* Each article fixed width (hint) */
-article{
-  width:300px;
-  background:#fff;
-  padding:18px 18px 12px 18px;
-  border:0;
-  color:#b2b2b2;            /* light text at rest */
-  max-height:430px;         /* “collapsed” */
-  overflow:hidden;
-  transition: color 2s, max-height 2s, transform 2s;
-}
-
-/* Hover: darker + expand (2 seconds) */
-article:hover{
-  color:#333;
-  max-height:1200px;
-  transform:scale(1.02);
-}
-
-/* Article headings */
-article h2{
-  margin:0 0 10px 0;
-  color:#a9a9a9;
-  transition: color 2s;
-}
-article:hover h2{
-  color:#111;
-}
-
-/* First letter styling ONLY for the main text paragraph (not Read more) */
-article > p:first-of-type::first-letter{
-  font-family:"Times New Roman", Times, serif;
-  font-size:36px;
-  line-height:1;
-  float:left;
-  padding-right:6px;
-  padding-top:2px;
-  color:inherit;
-}
-
-/* Keep “Read more...” unaffected by first-letter styling */
-article > p:last-of-type{
-  margin-top:16px;
-}
-
-/* Read more links + arrow image to the right (google links) */
-a[href*="google"]{
-  color:#1a35d6;
-  text-decoration:underline;
-  position:relative;
-  padding-right:22px; /* room for arrow */
-}
-
-/* arrow image (put arrowarrow.png in the SAME folder as this CSS file) */
-a[href*="google"]::after{
-  content:"";
-  display:inline-block;
-  width:16px;
-  height:16px;
-  margin-left:6px;
-  vertical-align:middle;
-  background:url("arrowarrow.png") no-repeat center/contain;
-}
-
-/*  “THANK YOU” fixed bottom-right  */
-#thanks{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  margin:0;
-  padding:16px 18px;
-  background:#78bdf0;
-  border:1px solid #000;
-  font-size:34px;
-  color:#0027d6;
-  text-decoration:underline;
-  z-index:70;
-}
-
-/*  JUMP MENU (hidden until hover over Recent Articles button)  */
+/* ---------- DROPDOWN JUMP MENU (Articles list) ---------- */
+/* This element already exists in the HTML as nav#jumpMenu; we turn it into the dropdown panel. */
 #jumpMenu{
-  position:fixed;
-  left:0;
-  top:52px; /* appears directly under the first nav button */
-  width:var(--sidebar-w);
-  background:#d7a623; /* golden */
-  padding:10px 12px 12px 12px;
-  display:none;        /* hidden by default */
-  z-index:65;
+  position: fixed;
+  top: var(--btnH);              /* directly under the first button */
+  left: 0;
+  width: var(--sidebarW);
+  background:#d7a21a;            /* gold panel */
+  border: 1px solid #000;
+  z-index: 80;
+
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .15s ease, transform .15s ease;
 }
 
-/* Big label like example */
 #jumpMenu h2{
-  margin:0 0 8px 0;
-  font-size:22px;
-  color:#000;
-  text-align:center;
+  margin: 0;
+  height: var(--btnH);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#b88710;
+  color:#fff;
+  font-size: 20px;
+  border-bottom: 1px solid #000;
 }
 
-/* Jump menu links */
+/* the jump links */
 #jumpMenu a{
   display:block;
+  padding: 4px 0;
   text-align:center;
-  color:#0017d6;
-  text-decoration:underline;
-  padding:2px 0;
+  text-decoration: none;
+  color:#001eff;
+  font-size: 22px;
+  line-height: 1.05;
 }
 
-/* Hover effect for jump menu links (font + background change) */
+/* hover state for jump links (font + background change) */
 #jumpMenu a:hover{
-  background:#0017d6;
+  background:#001eff;
   color:#fff;
 }
 
 /*
-  Show the jump menu ONLY when hovering the "Recent Articles" button.
-  This uses :has() because #jumpMenu comes before header in the HTML.
+  Show the jump menu when:
+  - you hover the "Recent Articles" button (first button), OR
+  - you hover the jump menu itself (so it doesn't disappear while moving the mouse)
+  This uses :has(), which works in Chrome/Edge/Safari (GitHub Pages viewing is fine).
 */
-body:has(header nav button:first-child:hover) #jumpMenu{
-  display:block;
+body:has(header nav button:first-child:hover) #jumpMenu,
+body:has(#jumpMenu:hover) #jumpMenu{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-/* Make the first button look “active” while menu is showing */
-body:has(header nav button:first-child:hover) header nav button:first-child{
-  background:#d7a623;
-  color:#fff;
+/* ---------- PAGE TITLE ---------- */
+main > h1{
+  text-align:center;
+  font-size: 54px;
+  margin: 30px 0 20px 0;
+  color:#222;
 }
 
-/* Footer can just sit below; not a grading focus */
+/* ---------- ARTICLES LAYOUT ---------- */
+#container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 26px 26px;
+  padding: 0 26px 80px 26px;
+}
+
+article{
+  width: 300px;                  /* fixed width per hint */
+  background:#fff;
+  padding: 18px 18px 10px 18px;
+  border: 0;
+  color: #b6b6b6;                /* light text initially */
+  transition: color 2s ease, transform 2s ease;
+}
+
+/* article headings */
+article h2{
+  margin: 0 0 8px 0;
+  font-size: 26px;
+  color: inherit;
+}
+
+/* main text paragraph */
+article p{
+  margin: 0 0 12px 0;
+  line-height: 1.35;
+  color: inherit;
+}
+
+/* make the first letter of the MAIN text big; do not affect "Read more..." */
+article p:first-of-type::first-letter{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 36px;
+  line-height: 1;
+  float: left;
+  padding-right: 6px;
+  padding-top: 2px;
+}
+
+/* hover: darker text + expand over 2 seconds */
+article:hover{
+  color:#333;
+  transform: scale(1.08);
+  z-index: 5;
+}
+
+/* keep "Read more..." paragraph from inheriting weird sizing; it should stay normal */
+article p:last-child{
+  margin-top: 18px;
+}
+
+/* "Read more" link styling */
+article p:last-child a{
+  color:#001eff;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+/* add arrow image to links that point to Google */
+article a[href*="google"]{
+  padding-right: 28px;
+  background-image: url("arrowarrow.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 18px 18px;
+}
+
+/* ---------- THANK YOU BLOCK (bottom-right fixed) ---------- */
+#thanks{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background:#8ec6f4;
+  border: 1px solid #000;
+  padding: 18px 22px;
+  margin: 0;
+  font-size: 40px;
+  color:#001eff;
+  text-decoration: underline;
+  z-index: 90;
+}
+
+/* ---------- optional: keep footer readable if you scroll down ---------- */
 footer{
-  margin-top:40px;
+  margin: 40px 26px 120px 26px;
+  color:#222;
 }
