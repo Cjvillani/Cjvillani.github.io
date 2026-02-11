@@ -1,4 +1,4 @@
-/* ---------- base page ---------- */
+/* ---------- base ---------- */
 * { box-sizing: border-box; }
 
 body{
@@ -7,91 +7,78 @@ body{
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* black left column background like the example */
-body::before{
-  content:"";
+/* ---------- LEFT SIDEBAR (this MUST target #menuItems) ---------- */
+#menuItems{
   position:fixed;
   left:0;
   top:0;
   width:260px;
   height:100vh;
-  background:#000;
-  z-index:0;
-}
-
-/* push the whole site right so the sidebar has room */
-main{
-  margin-left:260px;
-  position:relative;
-  z-index:1;
-}
-
-/* ---------- header / red banner ---------- */
-header{
-  background:#f00;
-  border-bottom:2px solid #000;
-  padding:28px 0;
-  text-align:center;
-}
-
-header p{
+  background:#000;     /* black column behind buttons */
+  padding:0;
   margin:0;
-  font-size:48px;
-  color:#000;
+  z-index:1000;
 }
 
-/* ---------- left sidebar buttons (header nav) ---------- */
-header nav{
-  position:fixed;
-  left:0;
-  top:0;
-  width:260px;
-  z-index:5;
-  padding-top:0;
-}
-
-header nav button{
-  width:260px;
+/* your menu is those tiny horizontal tabs — make them a vertical stack */
+#menuItems button{
   display:block;
+  width:260px;
   border:1px solid #111;
   background:#00f;
   color:#fff;
   font-size:22px;
   padding:12px 0;
+  margin:0;
   cursor:pointer;
 }
 
-header nav button:hover{
-  background:#c79216; /* gold-ish like example */
+/* hover on any navigation button changes background color */
+#menuItems button:hover{
+  background:#c79216;  /* gold */
   color:#fff;
 }
 
-/* ---------- jump menu dropdown (shows on hover of "Recent Articles") ---------- */
+/* if your HTML used list items (some versions do), neutralize bullets/spacing */
+#menuItems ul,
+#menuItems ol{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+#menuItems li{
+  margin:0;
+  padding:0;
+}
+
+/* ---------- JUMP MENU (nav#jumpMenu) ---------- */
 #jumpMenu{
   position:fixed;
   left:0;
-  top:56px;             /* sits directly under the first button */
+  top:56px;            /* sits directly under the first button */
   width:260px;
   background:#c79216;
   border-left:1px solid #111;
   border-right:1px solid #111;
   border-bottom:1px solid #111;
   padding:10px 0;
-  z-index:6;
-  display:none;         /* hidden until hover */
+  margin:0;
+  z-index:1100;
+  display:none;        /* hidden until hover */
 }
 
-/* hide the "Jump to an Article" heading so it matches the sample look */
+/* hide the "Jump to an Article" heading so it matches the example */
 #jumpMenu h2{
   display:none;
 }
 
-/* show the list when hovering the Recent Articles button */
-body:has(header nav button:first-child:hover) #jumpMenu{
+/* show the jump menu ONLY when hovering the Recent Articles button (first button) */
+#menuItems:has(button:first-of-type:hover) + #jumpMenu{
   display:block;
 }
 
-/* keep it visible when you move onto the menu */
+/* keep it open when your mouse is over the jump menu itself */
 #jumpMenu:hover{
   display:block;
 }
@@ -105,16 +92,37 @@ body:has(header nav button:first-child:hover) #jumpMenu{
   font-size:20px;
 }
 
-/* hover style for jump menu items (font + background change) */
+/* hover for jump menu items: font color + background color change */
 #jumpMenu a:hover{
   background:#00f;
   color:#fff;
 }
 
-/* remove the <br> spacing effect visually */
+/* if the provided HTML uses <br> between links, remove the extra visual spacing */
 #jumpMenu br{ display:none; }
 
-/* ---------- page title + grid ---------- */
+/* ---------- push all page content to the right of the sidebar ---------- */
+header,
+main,
+footer{
+  margin-left:260px;
+}
+
+/* ---------- header / banner ---------- */
+header{
+  background:#f00;
+  border-bottom:2px solid #000;
+  padding:28px 0;
+  text-align:center;
+}
+
+header p{
+  margin:0;
+  font-size:48px;
+  color:#000;
+}
+
+/* ---------- title + articles layout ---------- */
 h1{
   text-align:center;
   margin:40px 0 20px;
@@ -130,35 +138,35 @@ h1{
   padding:0 40px 40px;
 }
 
-/* ---------- articles: light -> dark + expand over 2 seconds ---------- */
+/* ---------- article behavior: light -> dark + expands, 2 seconds ---------- */
 article{
   width:280px;
   background:#fff;
   padding:18px 18px 10px;
   border:1px solid #eee1c8;
-  color:#bbb;                 /* light text at rest */
+  color:#bbb;                       /* light at rest */
   transition: color 2s, transform 2s;
   transform-origin:center top;
 }
 
 article:hover{
-  color:#111;                 /* darker on hover */
-  transform: scale(1.08);     /* expands */
+  color:#111;                       /* darker on hover */
+  transform: scale(1.08);           /* expands */
 }
 
-/* first letter styling (only the main paragraph; Read more unaffected) */
+/* first letter: only the first paragraph of main text; read more unaffected */
 article p:first-of-type::first-letter{
   font-family:"Times New Roman", Times, serif;
   font-size:36px;
   line-height:1;
 }
 
-/* keep the Read more link blue and not affected by the article color */
+/* keep Read more link blue regardless of article color */
 article a{
   color:#00f;
 }
 
-/* arrow for google links (your assignment says Read more goes to google) */
+/* arrow for google links */
 a[href*="google"]::after{
   content:"";
   display:inline-block;
@@ -180,10 +188,5 @@ a[href*="google"]::after{
   font-size:44px;
   color:#00f;
   text-decoration:underline;
-  z-index:4;
-}
-
-/* footer not graded, but keep it readable */
-footer{
-  padding:30px 40px 60px;
+  z-index:900;
 }
