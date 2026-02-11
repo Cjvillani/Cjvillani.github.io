@@ -1,267 +1,215 @@
-/* css-positioning2/style.css */
-
-/* ---------- page baseline ---------- */
-html, body{
-  margin:0;
-  padding:0;
-  background:#f6f2df;
-  font-family: "Times New Roman", Times, serif;
-}
-
+/* ---------- layout variables ---------- */
 :root{
-  --sidebarW: 15%;
-  --topbarH: 110px;
+  --sidebar-w: 15%;
+  --header-h: 130px;
 }
 
-/* ---------- LEFT SIDEBAR: "Recent Articles" + dropdown list ---------- */
-/* This is the thing your screenshot is missing/incorrect right now */
-#jumpMenu{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebarW);
-  height:100vh;
-  background:#000;              /* black column like example */
-  z-index:2000;
-  box-sizing:border-box;
+/* ---------- base ---------- */
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  background: #f6f1dc;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Make "Jump to an Article" look like the blue "Recent Articles" button */
-#jumpMenu h2{
-  margin:0;
-  padding:18px 10px;
-  text-align:center;
-  font-size:22px;
-  font-weight:700;
-  color:#fff;
-  background:#001ad9;
-  border-bottom:2px solid #0b0b0b;
-  position:relative;
-  /* hide original text but keep element */
-  text-indent:-9999px;
-}
-
-/* Replace heading text with "Recent Articles" (no HTML change) */
-#jumpMenu h2::after{
-  content:"Recent Articles";
-  text-indent:0;
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* Dropdown list (Article 1..10) hidden until hover over the "Recent Articles" area */
-#jumpMenu a{
-  display:block;
-  padding:2px 0;
-  text-align:center;
-  color:#0b2cff;
-  text-decoration:underline;
-  font-size:22px;
-  line-height:1.05;
-}
-
-/* collapse the link list by default */
-#jumpMenu{
-  overflow:hidden;
-}
-
-/* only show links when hovering the sidebar (matches “hover Recent Articles shows list”) */
-#jumpMenu a{
-  opacity:0;
-  max-height:0;
-  transition: opacity 0.2s ease, max-height 0.2s ease;
-}
-
-#jumpMenu:hover a{
-  opacity:1;
-  max-height:40px;
-}
-
-/* Dropdown background area like the example (golden) */
-#jumpMenu:hover{
-  background:#d7a220;
-}
-
-/* Hover effect for the jump links (font + bg change requirement) */
-#jumpMenu a:hover{
-  background:#001ad9;
-  color:#ffffff;
-}
-
-/* ---------- TOP HEADER (fixed) ---------- */
-header{
-  position:fixed;
-  top:0;
-  left:var(--sidebarW);        /* does NOT count space behind jump menu */
-  right:0;
-  height:var(--topbarH);
-  background:#ff0000;
-  border-bottom:2px solid #333;
-  z-index:1500;
-  box-sizing:border-box;
-}
-
-/* "MyBlog.com" centered in the red bar */
-header > p{
-  margin:0;
-  height:var(--topbarH);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:46px;
-  font-weight:700;
-  color:#000;
-}
-
-/* The nav buttons are repurposed as the left sidebar buttons */
-header nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebarW);
-  z-index:1000;
-  box-sizing:border-box;
-}
-
-/* Hide the broken first button (Recent Articles) because #jumpMenu is now that button */
-header nav button:first-child{
-  display:none;
-}
-
-/* Sidebar buttons (Services/Mission/About Us) */
-header nav button{
-  display:block;
-  width:100%;
-  height:62px;
-  font-size:22px;
-  color:#fff;
-  background:#001ad9;
-  border:0;
-  border-bottom:2px solid #0b0b0b;
-  cursor:pointer;
-}
-
-/* Hover background change requirement */
-header nav button:hover{
-  background:#0000ff;
-}
-
-/* Push these buttons down so they start under the #jumpMenu header + dropdown area */
-header nav{
-  top: calc(62px + 0px); /* aligns with the "Recent Articles" button height */
-}
-
-/* ---------- MAIN CONTENT LAYOUT ---------- */
+/* Push the page content to the right of the sidebar + below the fixed header */
 main{
-  margin-left:var(--sidebarW);
-  padding-top:calc(var(--topbarH) + 20px);
-  box-sizing:border-box;
+  margin-left: var(--sidebar-w);
+  padding-top: calc(var(--header-h) + 25px);
 }
 
+/* ---------- fixed top header bar (MyBlog.com) ---------- */
+header{
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-w);
+  right: 0;
+  height: var(--header-h);
+  background: #e40000;
+  border-bottom: 2px solid #222;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header p{
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 56px;
+  color: #000;
+}
+
+/* ---------- left sidebar = the nav buttons ---------- */
+header nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: #000;
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 0;
+}
+
+/* style the buttons (even though HTML uses invalid href on button) */
+header nav button{
+  width: 100%;
+  padding: 18px 10px;
+  font-size: 22px;
+  color: #fff;
+  background: #0a1fff;
+  border: 1px solid #111;
+  cursor: pointer;
+}
+
+header nav button:hover{
+  background: #0820b8; /* “background changes on hover” */
+}
+
+/* ---------- jump menu dropdown (appears when hovering Recent Articles) ---------- */
+/* Your HTML has <nav id="jumpMenu">...</nav> already. We reuse it as the dropdown list. */
+#jumpMenu{
+  position: fixed;
+  left: 0;
+  top: 62px;                 /* sits under the first sidebar button */
+  width: var(--sidebar-w);
+  background: #c89417;       /* golden panel like the example */
+  border: 1px solid #333;
+  z-index: 70;
+
+  padding: 0 0 8px 0;
+  display: none;
+}
+
+/* hide the built-in heading “Jump to an Article” and replace with “Recent Articles” */
+#jumpMenu h2{
+  display: none;
+}
+
+#jumpMenu::before{
+  content: "Recent Articles";
+  display: block;
+  padding: 14px 10px;
+  font-size: 22px;
+  color: #fff;
+  background: #c89417;
+  border-bottom: 2px solid #333;
+  text-align: center;
+}
+
+/* Show dropdown when hovering the FIRST nav button (Recent Articles) */
+body:has(header nav button:first-child:hover) #jumpMenu{
+  display: block;
+}
+
+/* Keep it open while hovering the dropdown itself */
+#jumpMenu:hover{
+  display: block;
+}
+
+/* format article links inside the dropdown */
+#jumpMenu a{
+  display: block;
+  padding: 0 12px;
+  line-height: 26px;
+  text-decoration: underline;
+  color: #0000cc;
+  background: transparent;
+}
+
+/* hover effect for dropdown links (font + background change) */
+#jumpMenu a:hover{
+  color: #fff;
+  background: #0a1fff;
+}
+
+/* ---------- main title ---------- */
 h1{
-  text-align:center;
-  font-size:56px;
-  margin:0 0 25px 0;
-  font-weight:700;
+  margin: 0;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 56px;
+  color: #111;
 }
 
-/* Articles grid that reflows on resize */
+/* ---------- article grid ---------- */
 #container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:22px;
-  padding:0 26px 80px 26px;
-  box-sizing:border-box;
+  margin: 20px auto 80px auto;
+  max-width: 1300px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
 }
 
 article{
-  width:300px;                 /* required “fixed width such as 300px” */
-  background:#ffffff;
-  padding:18px 18px 12px 18px;
-  box-sizing:border-box;
+  width: 300px;                     /* fixed width like the hint */
+  background: #fff;
+  padding: 18px 20px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
 
-  /* light text by default */
-  color:#b7b7b7;
-
-  /* smooth hover expand/darken over 2 seconds */
-  transition: transform 2s, color 2s;
+  color: rgba(0,0,0,0.25);          /* lightly-colored text initially */
+  transition: color 2s, transform 2s;
   transform: scale(1);
+  transform-origin: top center;
+}
+
+article:hover{
+  color: rgba(0,0,0,0.95);          /* darker on hover */
+  transform: scale(1.10);           /* “expands” on hover */
+  z-index: 10;
 }
 
 article h2{
-  margin:0 0 10px 0;
-  font-size:28px;
-  color:#b7b7b7;
-  transition: color 2s;
+  margin: 0 0 10px 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 28px;
 }
 
-/* Hover effect: darker and “expands” */
-article:hover{
-  color:#2f2f2f;
-  transform: scale(1.12);
-}
-
-article:hover h2{
-  color:#1f1f1f;
-}
-
-/* First letter styling for main text only (not the Read More paragraph) */
+/* first letter of MAIN text only (first paragraph), not “Read more” (second paragraph) */
 article p:first-of-type::first-letter{
   font-family: "Times New Roman", Times, serif;
-  font-size:36px;
-  line-height:1;
-  float:left;
-  margin:6px 6px 0 0;
-  color:inherit;
+  font-size: 36px;
+  line-height: 1;
+  float: left;
+  padding-right: 6px;
 }
 
-/* Keep "Read more..." unaffected by the first-letter rules */
-article p:last-of-type{
-  margin-top:12px;
+/* ---------- Read more arrow ---------- */
+article p:last-child a{
+  position: relative;
+  padding-right: 22px; /* room for arrow */
 }
 
-/* "Read more..." link + arrow icon to the right */
-article p:last-of-type a{
-  position:relative;
-  padding-right:26px;
+/* adds arrow to the right of the Read more link */
+article p:last-child a::after{
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  background: url("arrowarrow.png") no-repeat center / contain;
 }
 
-/* If the provided HTML uses google links, this targets those.
-   If yours are still "#", you can temporarily keep it on all Read more links by leaving this selector as-is. */
-article p:last-of-type a::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-  width:18px;
-  height:18px;
-  background-image:url("arrowarrow.png");
-  background-size:contain;
-  background-repeat:no-repeat;
-}
-
-/* ---------- “Thank you for visiting!” fixed bottom-right ---------- */
+/* ---------- Thank you fixed box (if your HTML includes it) ---------- */
 #thanks{
-  position:fixed;
-  right:10px;
-  bottom:10px;
-  margin:0;
-  padding:18px 22px;
-  background:#87c7ff;
-  border:1px solid #000;
-  font-size:44px;
-  font-weight:700;
-  color:#001ad9;
-  text-decoration:underline;
-  z-index:2500;
-}
-
-/* Optional: footer spacing so it doesn't hide behind the thanks block */
-footer{
-  padding:30px 26px 120px 26px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  background: #86c7ff;
+  border: 2px solid #333;
+  padding: 18px 24px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 42px;
+  z-index: 80;
 }
