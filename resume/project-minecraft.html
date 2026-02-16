@@ -4,80 +4,94 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Minecraft Minigame Server - Project</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Minecraft Minigame Server</h1>
-    <nav aria-label="Site navigation">
-      <ul>
-        <li><a href="index.html">Resume</a></li>
-        <li><a href="project-minecraft.html">Minecraft Project</a></li>
-        <li><a href="project-ucf-guide.html">UCF Guide Project</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="page">
+    <div class="layout">
+      <aside class="sidebar card">
+        <div class="card-pad">
+          <header class="site-header">
+            <h1>Minecraft Minigame Server</h1>
 
-  <main>
-<section aria-labelledby="project-images">
-  <h2 id="project-images">Project Images</h2>
+            <nav aria-label="Site navigation">
+              <ul>
+                <li><a href="index.html">Resume</a></li>
+                <li><a href="project-minecraft.html" aria-current="page">Minecraft Project</a></li>
+                <li><a href="project-ucf-guide.html">UCF Guide Project</a></li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </aside>
 
-  <figure>
-    <img src="images/minecraft-menu.png" alt="Screenshot showing the Minecraft server interface and plugin menu">
-    <figcaption>Server interface and plugin/gameplay configuration view.</figcaption>
-  </figure>
+      <main class="content card">
+        <div class="card-pad">
+          <section aria-labelledby="project-images">
+            <h2 id="project-images">Project Images</h2>
 
-  <figure>
-    <img src="images/minecraft-refill.png" alt="Screenshot showing refill stations added to the TwoFort map">
-    <figcaption>Refill stations added to the TwoFort map as part of gameplay improvements.</figcaption>
-  </figure>
-</section>
+            <div class="gallery">
+              <figure>
+                <img src="images/minecraft-menu.png" alt="Screenshot showing the Minecraft server interface and plugin menu">
+                <figcaption>Server interface and plugin/gameplay configuration view.</figcaption>
+              </figure>
 
-    <section aria-labelledby="description">
-      <h2 id="description">Project Description</h2>
-      <p>
-        Led a team project to build and operate a Minecraft server where users can join and play minigames. The project
-        focused on deploying a working environment, integrating plugins, improving gameplay through iterative prototypes,
-        and collecting user feedback through surveys.
-      </p>
-      <ul>
-        <li>Set up an Ubuntu environment and installed a Minecraft server management panel (Pterodactyl).</li>
-        <li>Configured connectivity so players could access the server and the team could manage it remotely.</li>
-        <li>Integrated plugins and supported updates across multiple prototype versions.</li>
-        <li>Helped troubleshoot issues and supported deployment of custom gameplay changes.</li>
-        <li>Created and conducted surveys to measure user experience and guide improvements.</li>
-      </ul>
-    </section>
+              <figure>
+                <img src="images/minecraft-refill.png" alt="Screenshot showing refill stations added to the TwoFort map">
+                <figcaption>Refill stations added to the TwoFort map as part of gameplay improvements.</figcaption>
+              </figure>
+            </div>
+          </section>
 
-    <section aria-labelledby="project-video">
-  <h2 id="project-video">Project Video</h2>
-  <p>
-    Crown Prototype Showcase Presentation (Unlisted YouTube Video)
-  </p>
+          <section aria-labelledby="description">
+            <h2 id="description">Project Description</h2>
+            <p>
+              Led a team project to build and operate a Minecraft server where users can join and play minigames. The project
+              focused on deploying a working environment, integrating plugins, improving gameplay through iterative prototypes,
+              and collecting user feedback through surveys.
+            </p>
+            <ul>
+              <li>Set up an Ubuntu environment and installed a Minecraft server management panel (Pterodactyl).</li>
+              <li>Configured connectivity so players could access the server and the team could manage it remotely.</li>
+              <li>Integrated plugins and supported updates across multiple prototype versions.</li>
+              <li>Helped troubleshoot issues and supported deployment of custom gameplay changes.</li>
+              <li>Created and conducted surveys to measure user experience and guide improvements.</li>
+            </ul>
+          </section>
 
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/JCTkuQTnlOQ"
-    title="Minecraft Minigame Server - Crown Prototype Showcase"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</section>
+          <section aria-labelledby="project-video">
+            <h2 id="project-video">Project Video</h2>
+            <p class="muted">Crown Prototype Showcase Presentation (Unlisted YouTube Video)</p>
 
-    <section aria-labelledby="skills-learned">
-      <h2 id="skills-learned">Skills Learned</h2>
-      <ul>
-        <li>Linux administration fundamentals (setup, services, basic troubleshooting).</li>
-        <li>Network connectivity concepts for hosted services and basic access control thinking.</li>
-        <li>Team-based deployment workflow and change tracking across versions.</li>
-        <li>User research methods: survey design, control group feedback, iteration based on results.</li>
-        <li>Project leadership: sprint planning, task coordination, and deliverable ownership.</li>
-      </ul>
-    </section>
-  </main>
+            <div class="video">
+              <iframe
+                src="https://www.youtube.com/embed/JCTkuQTnlOQ"
+                title="Minecraft Minigame Server - Crown Prototype Showcase"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </section>
 
-  <footer>
-    <p><a href="index.html">Back to Resume</a></p>
-  </footer>
+          <section aria-labelledby="skills-learned">
+            <h2 id="skills-learned">Skills Learned</h2>
+            <ul>
+              <li>Linux administration fundamentals (setup, services, basic troubleshooting).</li>
+              <li>Network connectivity concepts for hosted services and basic access control thinking.</li>
+              <li>Team-based deployment workflow and change tracking across versions.</li>
+              <li>User research methods: survey design, control group feedbacks; iteration based on results.</li>
+              <li>Project leadership: sprint planning, task coordination, and deliverable ownership.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <footer>
+            <p><a href="index.html">Back to Resume</a></p>
+          </footer>
+        </div>
+      </main>
+    </div>
+  </div>
 </body>
 </html>
