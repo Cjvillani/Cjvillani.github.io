@@ -3,95 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Minecraft Minigame Server - Project</title>
+  <title>Minigame Server &mdash; HCI Prototype | Carmine Joseph Villani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="page">
-    <div class="layout">
-      <aside class="sidebar card">
-        <div class="card-pad">
-          <header class="site-header">
-            <h1>Minecraft Minigame Server</h1>
 
-            <nav aria-label="Site navigation">
-              <ul>
-                <li><a href="index.html">Resume</a></li>
-                <li><a href="project-minecraft.html" aria-current="page">Minecraft Project</a></li>
-                <li><a href="project-ucf-guide.html">UCF Guide Project</a></li>
-              </ul>
-            </nav>
-          </header>
+    <header class="masthead masthead--compact">
+      <div class="masthead-left">
+        <p class="eyebrow">Project 02 &mdash; Systems &amp; Human&ndash;Computer Interaction</p>
+        <h1 class="name">Minigame <span class="name-accent">Server</span></h1>
+        <p class="tagline">A working server environment, built and tested from the ground up.</p>
+      </div>
+      <div class="masthead-right">
+        <dl class="meta-list">
+          <div class="meta-row">
+            <dt>Role</dt>
+            <dd>Project manager &amp; systems lead</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Environment</dt>
+            <dd>Ubuntu / Pterodactyl</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Course</dt>
+            <dd>Human&ndash;Computer Interaction</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html">&larr; Resume</a>
+      <a href="project-cis4004.html">RecipeStack</a>
+      <a href="project-minecraft.html" aria-current="page">Minigame Server</a>
+      <a href="project-ucf-guide.html">UCF Experience Guide</a>
+    </nav>
+
+    <main class="layout">
+
+      <section class="block" aria-labelledby="overview">
+        <p class="section-label">Overview</p>
+        <h2 id="overview" class="block-title">Stand up a real environment. Ship versions. Measure what changed.</h2>
+        <p class="lede">
+          I led a team building and operating a hosted multiplayer server with custom minigames. The
+          project was scoped as a Human&ndash;Computer Interaction study, which meant we weren&rsquo;t just deploying
+          software &mdash; we were iterating on user experience across multiple prototype releases and
+          measuring the change with structured user research. It was the closest I&rsquo;ve come so far to a
+          real infrastructure-plus-product delivery cycle.
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="gallery">
+        <p class="section-label">Gallery</p>
+        <h2 id="gallery" class="block-title">Build &amp; configuration</h2>
+
+        <div class="gallery">
+          <figure>
+            <img src="images/minecraft-menu.png" alt="Server management panel showing plugin and gameplay configuration">
+            <figcaption>Pterodactyl management panel and plugin/gameplay configuration view.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/minecraft-refill.png" alt="TwoFort map updated with refill stations based on user feedback">
+            <figcaption>Map updates informed by user testing, including added refill stations on the TwoFort map.</figcaption>
+          </figure>
         </div>
-      </aside>
+      </section>
 
-      <main class="content card">
-        <div class="card-pad">
-          <section aria-labelledby="project-images">
-            <h2 id="project-images">Project Images</h2>
+      <section class="block" aria-labelledby="work">
+        <p class="section-label">What I did</p>
+        <h2 id="work" class="block-title">Responsibilities</h2>
+        <ul class="entry-points entry-points--lede">
+          <li>
+            Stood up an Ubuntu host from scratch and installed the Pterodactyl management panel for
+            server orchestration, configuration, and operator access.
+          </li>
+          <li>
+            Configured networking so players could connect and the team could administer the server
+            remotely, including port configuration and basic access control.
+          </li>
+          <li>
+            Integrated gameplay plugins across multiple iterative releases, supporting updates and
+            custom gameplay changes between versions.
+          </li>
+          <li>
+            Troubleshot environment and deployment issues as they came up &mdash; the kind of
+            &ldquo;something isn&rsquo;t behaving, figure out why&rdquo; work that makes or breaks real systems.
+          </li>
+          <li>
+            Designed and ran user surveys to measure the impact of each version&rsquo;s changes and guide the
+            next round of work.
+          </li>
+        </ul>
+      </section>
 
-            <div class="gallery">
-              <figure>
-                <img src="images/minecraft-menu.png" alt="Screenshot showing the Minecraft server interface and plugin menu">
-                <figcaption>Server interface and plugin/gameplay configuration view.</figcaption>
-              </figure>
-
-              <figure>
-                <img src="images/minecraft-refill.png" alt="Screenshot showing refill stations added to the TwoFort map">
-                <figcaption>Refill stations added to the TwoFort map as part of gameplay improvements.</figcaption>
-              </figure>
-            </div>
-          </section>
-
-          <section aria-labelledby="description">
-            <h2 id="description">Project Description</h2>
-            <p>
-              Led a team project to build and operate a Minecraft server where users can join and play minigames. The project
-              focused on deploying a working environment, integrating plugins, improving gameplay through iterative prototypes,
-              and collecting user feedback through surveys.
-            </p>
-            <ul>
-              <li>Set up an Ubuntu environment and installed a Minecraft server management panel (Pterodactyl).</li>
-              <li>Configured connectivity so players could access the server and the team could manage it remotely.</li>
-              <li>Integrated plugins and supported updates across multiple prototype versions.</li>
-              <li>Helped troubleshoot issues and supported deployment of custom gameplay changes.</li>
-              <li>Created and conducted surveys to measure user experience and guide improvements.</li>
-            </ul>
-          </section>
-
-          <section aria-labelledby="project-video">
-            <h2 id="project-video">Project Video</h2>
-            <p class="muted">Crown Prototype Showcase Presentation (Unlisted YouTube Video)</p>
-
-            <div class="video">
-              <iframe
-                src="https://www.youtube.com/embed/JCTkuQTnlOQ"
-                title="Minecraft Minigame Server - Crown Prototype Showcase"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </section>
-
-          <section aria-labelledby="skills-learned">
-            <h2 id="skills-learned">Skills Learned</h2>
-            <ul>
-              <li>Linux administration fundamentals (setup, services, basic troubleshooting).</li>
-              <li>Network connectivity concepts for hosted services and basic access control thinking.</li>
-              <li>Team-based deployment workflow and change tracking across versions.</li>
-              <li>User research methods: survey design, control group feedbacks; iteration based on results.</li>
-              <li>Project leadership: sprint planning, task coordination, and deliverable ownership.</li>
-            </ul>
-          </section>
-
-          <hr>
-
-          <footer>
-            <p><a href="index.html">Back to Resume</a></p>
-          </footer>
+      <section class="block" aria-labelledby="video">
+        <p class="section-label">Recording</p>
+        <h2 id="video" class="block-title">Prototype showcase</h2>
+        <p class="muted-note">Crown Prototype Showcase (unlisted YouTube video)</p>
+        <div class="video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/JCTkuQTnlOQ?rel=0"
+            title="Minigame Server &mdash; Crown Prototype Showcase"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
-      </main>
-    </div>
+        <p class="video-fallback">
+          Trouble loading the video? <a href="https://www.youtube.com/watch?v=JCTkuQTnlOQ" target="_blank" rel="noopener">Watch it on YouTube &rarr;</a>
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="skills">
+        <p class="section-label">Takeaways</p>
+        <h2 id="skills" class="block-title">Skills exercised</h2>
+        <div class="skills-grid skills-grid--quad">
+          <div class="skills-group">
+            <h4>Systems</h4>
+            <ul>
+              <li>Linux setup &amp; service management</li>
+              <li>Panel-driven server orchestration</li>
+              <li>Troubleshooting under pressure</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h4>Networking</h4>
+            <ul>
+              <li>Hosted-service connectivity</li>
+              <li>Port configuration</li>
+              <li>Basic access control thinking</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h4>Team delivery</h4>
+            <ul>
+              <li>Version tracking across iterations</li>
+              <li>Coordinated deployments</li>
+              <li>Task ownership &amp; sprint planning</li>
+            </ul>
+          </div>
+          <div class="skills-group">
+            <h4>User research</h4>
+            <ul>
+              <li>Survey design</li>
+              <li>Control-group feedback</li>
+              <li>Iterating on measured results</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="block-footer">
+        <a href="index.html" class="cta cta--ghost">&larr; Back to Resume</a>
+      </footer>
+
+    </main>
+
+    <footer class="site-foot">
+      <p>&copy; 2026 Carmine Joseph Villani</p>
+      <p class="site-foot-sig">Orlando, Florida</p>
+    </footer>
+
   </div>
 </body>
 </html>

@@ -3,125 +3,259 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carmine Joseph Villani - Resume</title>
+  <title>Carmine Joseph Villani — Information Technology</title>
+  <meta name="description" content="Carmine Joseph Villani — B.S. Information Technology, University of Central Florida. Systems, networking, and project delivery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="page">
-    <div class="layout">
-      <aside class="sidebar card">
-        <div class="card-pad">
-          <header class="site-header">
-            <h1>Carmine Joseph Villani</h1>
 
-            <div class="contact-row">
-              <a class="pill" href="mailto:Ca840016@ucf.edu">Ca840016@ucf.edu</a>
-              <a class="pill" href="https://www.linkedin.com/in/carmine-villani-53780024b">LinkedIn</a>
-            </div>
+    <header class="masthead">
+      <div class="masthead-left">
+        <p class="eyebrow">Portfolio &mdash; Information Technology</p>
+        <h1 class="name">Carmine Joseph <span class="name-accent">Villani</span></h1>
+        <p class="tagline">Systems, networking, and deliberate project delivery.</p>
+      </div>
+      <div class="masthead-right">
+        <dl class="meta-list">
+          <div class="meta-row">
+            <dt>Based in</dt>
+            <dd>Orlando, FL</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Graduating</dt>
+            <dd>May 2026</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Available</dt>
+            <dd>Late June 2026</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
 
-            <nav aria-label="Site navigation">
-              <ul>
-                <li><a href="index.html" aria-current="page">Resume</a></li>
-                <li><a href="project-minecraft.html">Project: Minecraft Minigame Server</a></li>
-                <li><a href="project-ucf-guide.html">Project: UCF Experience Guide</a></li>
-              </ul>
-            </nav>
-          </header>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Resume</a>
+      <a href="project-cis4004.html">RecipeStack &mdash; Full-Stack MERN</a>
+      <a href="project-minecraft.html">Minigame Server</a>
+      <a href="project-ucf-guide.html">UCF Experience Guide</a>
+      <div class="topnav-contact">
+        <a href="mailto:villani.carmine99@gmail.com" class="contact-link">villani.carmine99@gmail.com</a>
+        <a href="https://www.linkedin.com/in/carmine-villani-53780024b" class="contact-link">LinkedIn &rarr;</a>
+      </div>
+    </nav>
+
+    <main class="layout">
+
+      <section class="block block--intro" aria-labelledby="summary">
+        <p class="section-label">01 &mdash; Summary</p>
+        <h2 id="summary" class="block-title">Technically grounded. Detail&#8209;oriented. Built to earn the job.</h2>
+        <p class="lede">
+          Final-semester Information Technology student at the University of Central Florida, graduating
+          in May 2026 with a 3.60 GPA. I work across Linux systems, network configuration, identity and
+          cloud tooling, and full-stack web development. I lead projects end-to-end &mdash; from environment
+          setup and iterative deployment to user testing, documentation, and final delivery &mdash; and I take
+          seriously the kind of work that holds up in a real operations environment.
+        </p>
+      </section>
+
+      <section class="block" aria-labelledby="education">
+        <p class="section-label">02 &mdash; Education</p>
+        <h2 id="education" class="block-title">Education</h2>
+
+        <div class="entry">
+          <div class="entry-head">
+            <h3 class="entry-title">University of Central Florida</h3>
+            <p class="entry-dates">Aug 2022 &mdash; May 2026</p>
+          </div>
+          <p class="entry-role">Bachelor of Science, Information Technology</p>
+          <ul class="entry-points">
+            <li>Cumulative GPA: <strong>3.60</strong></li>
+            <li>Coursework across networking, systems administration, databases, project management, and human&ndash;computer interaction.</li>
+            <li>National Honor Society member.</li>
+          </ul>
         </div>
-      </aside>
 
-      <main class="content card">
-        <div class="card-pad">
-          <section aria-labelledby="objective">
-            <h2 id="objective">Professional Objective</h2>
-            <p>
-              Motivated Information Technology student at the University of Central Florida seeking a professional role to
-              apply and strengthen skills in IT support, cybersecurity fundamentals, and technical troubleshooting while
-              contributing to team based projects and project management efforts in a real world environment.
+        <div class="entry">
+          <div class="entry-head">
+            <h3 class="entry-title">Seton Hall Preparatory School</h3>
+            <p class="entry-dates">Sep 2018 &mdash; May 2022</p>
+          </div>
+          <p class="entry-role">High School Diploma</p>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="projects">
+        <p class="section-label">03 &mdash; Selected Projects</p>
+        <h2 id="projects" class="block-title">Selected projects</h2>
+
+        <a href="project-cis4004.html" class="project-card">
+          <div class="project-card-index">01</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">RecipeStack &mdash; Full-Stack MERN Application</h3>
+            <p class="project-card-desc">
+              Five-person team build of a MongoDB / Express / React / Node web application featuring user
+              authentication, content submission, community rating, role-based admin controls, and leaderboards.
+              I shipped the &ldquo;My Recipes&rdquo; feature end-to-end &mdash; filtered feed, inline edit form, optimistic UI,
+              and safe delete flow &mdash; and carried the admin page into the team&rsquo;s unified visual system.
             </p>
-          </section>
+            <p class="project-card-stack">MongoDB &middot; Express &middot; React &middot; Node.js &middot; Mongoose &middot; Git / GitHub &middot; Vite</p>
+          </div>
+          <div class="project-card-arrow" aria-hidden="true">&rarr;</div>
+        </a>
 
-          <section aria-labelledby="education">
-            <h2 id="education">Education</h2>
+        <a href="project-minecraft.html" class="project-card">
+          <div class="project-card-index">02</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Minigame Server &mdash; HCI Prototype &amp; Study</h3>
+            <p class="project-card-desc">
+              Stood up an Ubuntu server from scratch, installed and configured the Pterodactyl management
+              panel, established remote connectivity, and integrated plugins across multiple iterative
+              prototypes. Designed and ran user surveys to quantify gameplay improvements across versions.
+            </p>
+            <p class="project-card-stack">Ubuntu &middot; Pterodactyl Panel &middot; Networking &middot; User Research</p>
+          </div>
+          <div class="project-card-arrow" aria-hidden="true">&rarr;</div>
+        </a>
 
-            <article>
-              <h3>University of Central Florida</h3>
-              <p class="meta">B.S. in Information Technology, Aug 2022 – Present</p>
-              <ul>
-                <li>GPA: 3.50</li>
-                <li>National Honor Society Member</li>
-              </ul>
-            </article>
+        <a href="project-ucf-guide.html" class="project-card">
+          <div class="project-card-index">03</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">UCF Experience Guide &mdash; Project Management</h3>
+            <p class="project-card-desc">
+              Led a class team through a full Kanban-driven workflow to research, write, and publish a
+              student-facing resource guide. Iterated through multiple revision cycles based on feedback.
+              The final deliverable was distributed to students and submitted to UCF Student Government.
+            </p>
+            <p class="project-card-stack">Trello &middot; Stakeholder Communication &middot; Documentation</p>
+          </div>
+          <div class="project-card-arrow" aria-hidden="true">&rarr;</div>
+        </a>
+      </section>
 
-            <article>
-              <h3>Seton Hall Preparatory School</h3>
-              <p class="meta">High School Diploma, Sep 2018 – May 2022</p>
-            </article>
-          </section>
+      <section class="block" aria-labelledby="experience">
+        <p class="section-label">04 &mdash; Experience</p>
+        <h2 id="experience" class="block-title">Work experience</h2>
 
-          <section aria-labelledby="experience">
-            <h2 id="experience">Relevant Work Experience</h2>
-
-            <article>
-              <h3>Cashier &amp; Customer Service — Super Foodtown</h3>
-              <p class="meta">Apr 2024 – Aug 2024</p>
-              <ul>
-                <li>Handled high-volume transactions with accuracy while maintaining customer service standards.</li>
-                <li>Supported store operations through organization, communication, and problem resolution.</li>
-              </ul>
-            </article>
-
-            <article>
-              <h3>Customer Service &amp; Chemicals Advisor — Rix Pool &amp; Spa</h3>
-              <p class="meta">Apr 2023 – Aug 2024</p>
-              <ul>
-                <li>Performed routine testing and customer support while tracking results and recommendations.</li>
-                <li>Troubleshot equipment issues and communicated solutions clearly to customers.</li>
-              </ul>
-            </article>
-          </section>
-
-          <section aria-labelledby="projects">
-            <h2 id="projects">Projects</h2>
-
-            <article>
-              <h3><a href="project-minecraft.html">Minecraft Minigame Server</a></h3>
-              <p>
-                Project manager for a Human-Computer Interaction project building a playable Minecraft server with minigames,
-                iterative testing, and survey-based feedback.
-              </p>
-            </article>
-
-            <article>
-              <h3><a href="project-ucf-guide.html">UCF Experience Guide</a></h3>
-              <p>
-                Project manager for a project management class deliverable: a student-facing guide/flyer to help new students
-                discover UCF resources, improved through multiple revisions and testing.
-              </p>
-            </article>
-          </section>
-
-          <section aria-labelledby="skills">
-            <h2 id="skills">Skills</h2>
-            <ul>
-              <li>Operating Systems: Linux (Ubuntu)</li>
-              <li>Systems/Tools: Pterodactyl Panel, VirtualBox</li>
-              <li>Networking Concepts: connectivity setup, basic access control, port configuration</li>
-              <li>Programming: Java (basic), C (basic)</li>
-              <li>IT Tools: Active Directory, Azure, Wireshark</li>
-              <li>Project Management: Trello, Asana, sprint planning, team coordination</li>
-              <li>Documentation and Communication: technical writing, presentations, stakeholder feedback</li>
-            </ul>
-          </section>
-
-          <hr>
-
-          <footer>
-            <p class="muted">Last updated: 2026</p>
-          </footer>
+        <div class="entry">
+          <div class="entry-head">
+            <h3 class="entry-title">Super Foodtown</h3>
+            <p class="entry-dates">Apr 2024 &mdash; Aug 2024</p>
+          </div>
+          <p class="entry-role">Cashier &amp; Customer Service</p>
+          <ul class="entry-points">
+            <li>Processed high-volume transactions accurately under time pressure while maintaining a calm, professional customer-facing standard.</li>
+            <li>Supported store operations through organization, clear communication, and fast problem resolution.</li>
+          </ul>
         </div>
-      </main>
-    </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <h3 class="entry-title">Rix Pool &amp; Spa</h3>
+            <p class="entry-dates">Apr 2023 &mdash; Aug 2024</p>
+          </div>
+          <p class="entry-role">Customer Service &amp; Chemicals Advisor</p>
+          <ul class="entry-points">
+            <li>Ran routine water-chemistry testing, tracked results over time, and translated technical readings into clear customer recommendations.</li>
+            <li>Troubleshot equipment issues on the spot and communicated solutions in plain language.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="skills">
+        <p class="section-label">05 &mdash; Capabilities</p>
+        <h2 id="skills" class="block-title">Technical capabilities</h2>
+
+        <div class="skills-grid">
+          <div class="skills-group">
+            <h4>Systems &amp; Operating Environments</h4>
+            <ul>
+              <li>Linux administration (Ubuntu)</li>
+              <li>Windows Server concepts</li>
+              <li>VirtualBox / virtualization</li>
+              <li>Pterodactyl panel deployment</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <h4>Networking &amp; Security</h4>
+            <ul>
+              <li>Connectivity setup &amp; port configuration</li>
+              <li>Basic access control</li>
+              <li>Wireshark packet analysis</li>
+              <li>Cisco Packet Tracer</li>
+              <li>CompTIA A+ (in progress)</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <h4>Identity &amp; Cloud</h4>
+            <ul>
+              <li>Active Directory</li>
+              <li>Microsoft Azure fundamentals</li>
+              <li>User &amp; role management</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <h4>Development</h4>
+            <ul>
+              <li>JavaScript / React</li>
+              <li>HTML &amp; CSS</li>
+              <li>Node.js &amp; Express</li>
+              <li>MongoDB / Mongoose</li>
+              <li>Java, C (foundational)</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <h4>Project Delivery</h4>
+            <ul>
+              <li>Trello &amp; Asana</li>
+              <li>Kanban &amp; sprint planning</li>
+              <li>Git / GitHub (branching, PR workflow)</li>
+              <li>Stakeholder communication</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <h4>Documentation &amp; Productivity</h4>
+            <ul>
+              <li>Microsoft Office suite</li>
+              <li>Technical writing</li>
+              <li>Presentations &amp; survey design</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block block--closing" aria-labelledby="closing">
+        <p class="section-label">06 &mdash; Contact</p>
+        <h2 id="closing" class="block-title closing-title">
+          Ready to contribute from day one.
+        </h2>
+        <p class="closing-body">
+          I&rsquo;m looking for a role where I can apply a well-rounded technical foundation,
+          learn from experienced engineers, and earn trust through steady, detail-oriented work.
+          I&rsquo;m available beginning late June 2026 and flexible on timing.
+        </p>
+        <div class="closing-actions">
+          <a href="mailto:villani.carmine99@gmail.com" class="cta cta--primary">villani.carmine99@gmail.com</a>
+          <a href="https://www.linkedin.com/in/carmine-villani-53780024b" class="cta cta--ghost">LinkedIn &rarr;</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-foot">
+      <p>&copy; 2026 Carmine Joseph Villani</p>
+      <p class="site-foot-sig">Orlando, Florida</p>
+    </footer>
+
   </div>
 </body>
 </html>
